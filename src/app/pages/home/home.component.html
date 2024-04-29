@@ -1,11 +1,19 @@
 <app-search></app-search>
-<div class="contacts-action">
-  <h2>
-    3 Contatos
+<div class="contacts-action" [ngStyle]="{'justify-content': contactsList.length == 0 ? 'center' : 'space-between'}">
+  <h2 *ngIf="contactsList.length != 0">
+    {{contactsList.length}} Contatos
   </h2>
   <app-button></app-button>
 </div>
 <div class="line"></div>
-<div class="contacts-cards">
-  <app-card-social [data]="card" *ngFor="let card of data"></app-card-social>
+<div class="contacts-cards" *ngIf="contactsList.length != 0">
+  <app-card-social (cardByDelete)="cardByDelete = $event" [data]="card" *ngFor="let card of contactsList"></app-card-social>
 </div>
+<div class="contacts-not-found-cards" *ngIf="contactsList.length == 0">
+  <img src="assets/svg/empty-box.svg" alt="Box vazio">
+  <p class="gray-200 body-medium">
+    Você ainda não tem nenhum contato cadastrado!
+    Clique no botão <strong>”Novo contato”</strong> à cima para cadastrar o seu primeiro!
+  </p>
+</div>
+<app-modal [data]="cardByDelete" *ngIf="isModalOpened" @modalAnimation></app-modal>

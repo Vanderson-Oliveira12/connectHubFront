@@ -1,39 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SearchComponent } from '../../components/search/search.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { CardSocialComponent } from '../../components/card-social/card-social.component';
 import { CommonModule } from '@angular/common';
 import { ICard } from '../../interfaces/ICard';
+import { ModalComponent } from '../../components/modal/modal.component';
+import { modalAnimation } from '../../animation/modal';
+import { HomeService } from './home.service';
+import { ContactService } from '../contact/contact.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SearchComponent, ButtonComponent, CardSocialComponent, CommonModule],
+  imports: [SearchComponent, ButtonComponent, CardSocialComponent, CommonModule, ModalComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+  animations: [modalAnimation]
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-  data: ICard[] = [
-    {
-      email: "joao@example.com",
-      name: "João da Silva",
-      phone: "+55 11 98765-4321",
-      social: "Instagram"
-    },
-    {
-      email: "maria@example.com",
-      name: "Maria Santos",
-      phone: "+55 21 99876-5432",
-      social: "Linkedin"
-    },
-    {
-      email: "pedro@example.com",
-      name: "Pedro Oliveira",
-      phone: "+55 31 98765-1234",
-      social: "Facebook"
-    }
-  ];
+  contactsList: ICard[] = [];
+
+  cardByDelete!: ICard;
+  isModalOpened: boolean = false;
+
+  constructor(private homeService: HomeService, private contactService: ContactService) { }
+
+  ngOnInit(): void {
+    this.homeService.modalDeleteOpened$.subscribe(status => {
+      this.isModalOpened = status;
+    })
+
+    this.handleGetContacts();
+  }
+
+  handleGetContacts() {
+    this.contactService.handleGetAllContacts().subscribe({
+      next: (contacts: ICard[]) => {
+        this.contactsList = contacts;
+      },
+      error: (err) => {
+
+      }
+    })
+  }
 
 
 }

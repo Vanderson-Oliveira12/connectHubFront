@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ICard } from '../../interfaces/ICard';
+import { HomeService } from '../../pages/home/home.service';
 
 @Component({
   selector: 'app-card-social',
@@ -16,5 +17,15 @@ export class CardSocialComponent {
     phone: '',
     social: '',
   };
+
+  @Output() cardByDelete = new EventEmitter<ICard>();
+
+  constructor(private homeService: HomeService) { }
+
+
+  handleDeleteContact() {
+    this.homeService.handleOpenModalDelete();
+    this.cardByDelete.emit(this.data);
+  }
 
 }
