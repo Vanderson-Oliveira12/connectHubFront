@@ -1,0 +1,22 @@
+@use "variables";
+
+input[type="text"] {
+  border-radius: 25px;
+  background-color: #fff;
+  border: none;
+  height: 5rem;
+  padding: 0 1.6rem;
+  outline: none;
+  color: variables.$gray-200;
+  font-size: 1.6rem;
+  width: 100%;
+
+  &::placeholder {
+    transition: 0.5s ease;
+    color: #bcbcbc;
+  }
+
+  &:focus::placeholder {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,26 @@
+@use "variables";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.contacts-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 3.2rem;
+  margin-bottom: 1.6rem;
+}
+
+.line {
+  height: .2rem;
+  background-color: variables.$gray-200;
+  margin-bottom: 1.6rem;
+}
+
+.contacts-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}

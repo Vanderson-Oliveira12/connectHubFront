@@ -1,0 +1,70 @@
+@use "variables";
+
+:host {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(34, 34, 34, .6);
+  backdrop-filter: blur(4px);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container {
+  padding: 2.4rem;
+  border-radius: .4rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fff;
+  min-height: 20.4rem;
+  max-width: 45.3rem;
+  width: 100%;
+
+    h3 {
+      color: variables.$danger-main;
+      font-size: 2.2rem;
+    }
+
+    p {
+      margin-top: .8rem;
+      margin-bottom: 3.2rem;
+    }
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  align-self: flex-end;
+
+    button {
+      cursor: pointer;
+      padding: 1rem 1.7rem;
+      border: none;
+      background-color: transparent;
+    }
+
+    .btn-delete {
+      background-color: variables.$danger-main;
+      color: #fff;
+      border-radius: .4rem;
+      border: 1px solid transparent;
+      transition: .5s ease;
+
+        &:hover {
+          background-color: transparent;
+          color: variables.$danger-main;
+          border: 1px solid variables.$danger-main;
+        }
+    }
+
+    .btn-cancel {
+      color: variables.$gray-200;
+    }
+}

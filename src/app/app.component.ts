@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { ModalComponent } from './components/modal/modal.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [CommonModule, RouterOutlet, ModalComponent],
+  templateUrl: "./app.component.html",
+  styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
   title = 'connecthubfront';
 }

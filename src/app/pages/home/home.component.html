@@ -1,0 +1,11 @@
+<app-search></app-search>
+<div class="contacts-action">
+  <h2>
+    3 Contatos
+  </h2>
+  <app-button></app-button>
+</div>
+<div class="line"></div>
+<div class="contacts-cards">
+  <app-card-social [data]="card" *ngFor="let card of data"></app-card-social>
+</div>
