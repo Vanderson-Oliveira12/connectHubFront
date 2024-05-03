@@ -45,3 +45,23 @@
       color: variables.$success;
     }
 }
+
+.contacts-container-error {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+
+    p {
+      font-weight: bold;
+      font-size: 2.2rem;
+      color: variables.$danger-dark;
+      margin-bottom: .8rem;
+    }
+}
+
+.contact-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 22rem;
+}

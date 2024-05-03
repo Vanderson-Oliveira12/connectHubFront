@@ -1,19 +1,54 @@
 <app-search></app-search>
-<div class="contacts-action" [ngStyle]="{'justify-content': contactsList.length == 0 ? 'center' : 'space-between'}">
-  <h2 *ngIf="contactsList.length != 0">
-    {{contactsList.length}} Contatos
-  </h2>
-  <app-button></app-button>
+<div
+  class="contacts-action"
+  [ngStyle]="{
+    'justify-content': contactsList.length == 0 ? 'center' : 'space-between'
+  }"
+>
+  <h2 *ngIf="contactsList.length != 0">{{ contactsList.length }} Contatos</h2>
+  <app-button (onClick)="handleRedirect()" value="Novo contato"></app-button>
 </div>
 <div class="line"></div>
-<div class="contacts-cards" *ngIf="contactsList.length != 0">
-  <app-card-social (cardByDelete)="cardByDelete = $event" [data]="card" *ngFor="let card of contactsList"></app-card-social>
-</div>
-<div class="contacts-not-found-cards" *ngIf="contactsList.length == 0">
-  <img src="assets/svg/empty-box.svg" alt="Box vazio">
+
+@if (contactsList.length != 0) {
+  <div class="contacts-cards">
+    <app-card-social
+      (cardByDelete)="cardByDelete = $event"
+      [data]="card"
+      *ngFor="let card of contactsList"
+    ></app-card-social>
+  </div>
+}
+
+@if (contactsList.length == 0 && !hasError && !isLoading) {
+<div class="contacts-not-found-cards">
+  <img src="assets/svg/empty-box.svg" alt="Box vazio" />
   <p class="gray-200 body-medium">
-    Você ainda não tem nenhum contato cadastrado!
-    Clique no botão <strong>”Novo contato”</strong> à cima para cadastrar o seu primeiro!
+    Você ainda não tem nenhum contato cadastrado! Clique no botão
+    <strong>”Novo contato”</strong> à cima para cadastrar o seu primeiro!
   </p>
 </div>
-<app-modal [data]="cardByDelete" *ngIf="isModalOpened" @modalAnimation></app-modal>
+}
+
+@if (!isLoading && hasError) {
+  <div class="contacts-container-error">
+    <img src="../../../assets/img/sad.png" alt="Erro" />
+    <div class="error-content">
+      <p>Ocorreu um erro ao obter os seus contatos</p>
+      <app-button value="Tentar novamente"></app-button>
+    </div>
+  </div>
+}
+
+@if (isLoading) {
+  <div class="contact-loading">
+    <app-loading></app-loading>
+  </div>
+}
+
+
+<app-modal
+  [data]="cardByDelete"
+  *ngIf="isModalOpened"
+  @modalAnimation
+></app-modal>
