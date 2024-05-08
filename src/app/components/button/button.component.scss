@@ -1,5 +1,10 @@
 @use "variables";
 
+:host {
+  width: 100%;
+  display: block;
+}
+
 button {
   cursor: pointer;
   padding: 1.2rem;
@@ -8,6 +13,9 @@ button {
   color: variables.$success;
   transition: .5s ease;
   background-color: transparent;
+  display: block;
+  width: 100%;
+  height: 100%;
 
     &:hover {
       background-color: variables.$success;

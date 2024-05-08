@@ -1,0 +1,46 @@
+@use "variables";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+input {
+  display: block;
+  width: 100%;
+  border-radius: 0.4rem;
+  padding: 1.6rem;
+  background-color: #fff;
+  outline: none;
+  border: 2px solid transparent;
+  transition: 0.5s ease;
+  color: variables.$gray-900;
+  font-size: 1.6rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+  &::placeholder {
+    transition: 0.5s ease;
+    color: variables.$gray-200;
+    font-size: 1.6rem;
+  }
+
+  &:focus {
+    border: 2px solid variables.$success;
+
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+
+}
+
+
+.input-error {
+  border: 2px solid variables.$danger-main;
+}
+
+.label-error {
+  color: variables.$danger-main;
+  font-size: 1.2rem;
+  margin-top: .8rem;
+}

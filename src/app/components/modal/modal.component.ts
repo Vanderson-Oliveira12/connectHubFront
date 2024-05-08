@@ -17,7 +17,7 @@ export class ModalComponent {
     email: '',
     name: '',
     phone: '',
-    social: '',
+    category: '',
   };
 
   constructor(private homeService: HomeService, private contactService: ContactService) {

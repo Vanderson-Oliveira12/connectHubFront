@@ -17,8 +17,8 @@ export class ContactService {
     return this.http.get<ICard[]>(`${this.api}`)
   }
 
-  handleCreateContact() {
-
+  handleCreateContact(data: ICard): Observable<Object> {
+    return this.http.post(`${this.api}/create`, data)
   }
 
   handleEditContact() {

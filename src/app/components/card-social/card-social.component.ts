@@ -15,7 +15,7 @@ export class CardSocialComponent {
     email: '',
     name: '',
     phone: '',
-    social: '',
+    category: '',
   };
 
   @Output() cardByDelete = new EventEmitter<ICard>();

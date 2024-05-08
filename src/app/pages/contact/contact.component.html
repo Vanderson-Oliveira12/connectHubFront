@@ -1,1 +1,7 @@
-<p>contact works!</p>
+<form>
+  <app-input [(model)]="form.name" nameAndID="contactName" placeholder="Nome" type="text"></app-input>
+  <app-input [(model)]="form.email" nameAndID="contactEmail" placeholder="E-mail" type="email"></app-input>
+  <app-input [(model)]="form.phone" nameAndID="contactPhone" placeholder="Telefone" type="text"></app-input>
+  <app-input [(model)]="form.category" nameAndID="contactCategory" placeholder="Categoria" type="text"></app-input>
+  <app-button (onClick)="handleSubmit()" class="btn-form" value="Cadastrar"></app-button>
+</form>
