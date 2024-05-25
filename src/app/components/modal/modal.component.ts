@@ -29,8 +29,18 @@ export class ModalComponent {
   }
 
   handleDeleteContact() {
+
     if(this.data._id) {
-      this.contactService.handleDeletContact(this.data._id).subscribe({})
+      this.contactService.handleDeletContact(this.data._id).subscribe({
+        next: res => {
+          console.log(res)
+
+          this.homeService.handleCloseModalDelete();
+        },
+        error: err => {
+          console.log(err)
+        }
+      })
     }
   }
 

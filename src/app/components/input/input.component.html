@@ -1,10 +1,11 @@
 <input
   [(ngModel)]="model"
-  (ngModelChange)="modelChange.emit($event)"
+
+  (input)="setValueInModel($event)"
   [type]="type"
   [name]="nameAndID"
   autocomplete="off"
   [id]="nameAndID"
   [placeholder]="placeholder"
 />
-<!-- <p class="label-error">dadsadsasad</p> -->
+<p class="label-error" *ngIf="messageError">{{messageError}}</p>

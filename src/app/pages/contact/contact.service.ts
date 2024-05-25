@@ -26,7 +26,7 @@ export class ContactService {
   }
 
   handleDeletContact(contactId: string) {
-    return this.http.delete(`${this.api}/delete`)
+    return this.http.delete(`${this.api}/delete/${contactId}`)
   }
 
 }
