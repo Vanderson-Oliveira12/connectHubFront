@@ -30,22 +30,20 @@
 </div>
 }
 
-@if (!isLoading && hasError) {
-  <div class="contacts-container-error">
-    <img src="../../../assets/img/sad.png" alt="Erro" />
-    <div class="error-content">
-      <p>Ocorreu um erro ao obter os seus contatos</p>
-      <app-button value="Tentar novamente"></app-button>
-    </div>
-  </div>
-}
 
 @if (isLoading) {
   <div class="contact-loading">
     <app-loading></app-loading>
   </div>
+} @else if(!isLoading && hasError) {
+  <div class="contacts-container-error">
+    <img src="../../../assets/img/sad.png" alt="Erro" />
+    <div class="error-content">
+      <p>Ocorreu um erro ao obter os seus contatos</p>
+      <app-button (onClick)="handleReloadDataApi()" value="Tentar novamente"></app-button>
+    </div>
+  </div>
 }
-
 
 <app-modal
   [data]="cardByDelete"

@@ -21,7 +21,7 @@ import { LoadingComponent } from '../../components/loading/loading.component';
 })
 export class HomeComponent implements OnInit {
 
-  isLoading: boolean = false;
+  isLoading: boolean = true;
   hasError: boolean = false;
   contactsList: ICard[] = [];
 
@@ -40,6 +40,8 @@ export class HomeComponent implements OnInit {
 
   handleGetContacts() {
     this.isLoading = true;
+    this.hasError = false;
+
     this.contactService.handleGetAllContacts().subscribe({
       next: (contacts: ICard[]) => {
         this.contactsList = contacts;
@@ -51,6 +53,11 @@ export class HomeComponent implements OnInit {
         this.hasError = true;
       }
     })
+  }
+
+  handleReloadDataApi() {
+    this.isLoading = true;
+    this.handleGetContacts()
   }
 
   handleRedirect() {
